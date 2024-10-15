@@ -1,0 +1,58 @@
+package linkedinAUTO;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class BussinessAnalyst {
+	 private static int clickCount = 0;
+	public static void softwareengineering(WebDriver driver) throws IOException, InterruptedException {
+
+	     driver.get("https://www.pnet.co.za/candidate/login");
+	        driver.manage().window().maximize();
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        
+	        // Accept cookies
+	       // WebDriverWait wait = new WebDriverWait(driver, 10);
+
+	        // Wait until the accept cookies button is clickable and then click it
+	        WebElement acceptCookiesButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("ccmgt_explicit_accept")));
+	        acceptCookiesButton.click();
+
+	        // Wait until the email input field is visible and then send keys
+	        WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"stepstone-form-element-8\"]")));
+	        emailInput.sendKeys("arenahojuska@gmail.com");
+
+	        // Wait until the password input field is visible and then send keys
+	        WebElement passwordInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("password")));
+	        passwordInput.sendKeys("");
+
+	        // Wait until the login button is clickable and then click it
+	        WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[2]/div/div/div/div/article/div/div[1]/div[1]/div/div[6]/div/div[1]/button")));
+	        loginButton.click();
+	        Thread.sleep(3000);
+	        // Wait until the element after login is visible and then click it
+	        WebElement headerLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app-header\"]/header/div/div[1]/a")));
+	        headerLink.click();
+	        Thread.sleep(4000);
+	        
+}
