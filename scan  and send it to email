@@ -1,0 +1,157 @@
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.base import MIMEBase
+from email import encoders
+from email.mime.text import MIMEText
+import tkinter as tk
+from tkinter import filedialog, simpledialog, messagebox
+import os
+from PyPDF2 import PdfMerger, PdfReader
+from docx import Document
+from PIL import Image
+
+def send_email_with_attachment(file_path, recipient_email, subject, body):
+    sender_email = ""
+    password = ""
+
+    # Create the email
+    msg = MIMEMultipart()
+    msg['From'] = sender_email
+    msg['To'] = recipient_email
+    msg['Subject'] = subject
+
+    # Email body
+    msg.attach(MIMEText(body, 'plain'))
+
+
+    try:
+        with open(file_path, "rb") as attachment:
+            part = MIMEBase('application', 'octet-stream')
+            part.set_payload(attachment.read())
+            encoders.encode_base64(part)
+            part.add_header('Content-Disposition', f"attachment; filename={os.path.basename(file_path)}")
+            msg.attach(part)
+    except Exception as e:
+        print(f"An error occurred while attaching the file: {e}")
+        return
+
+    # Send the email
+    try:
+        with smtplib.SMTP('smtp.office365.com', 587) as server:
+            server.starttls()
+            server.login(sender_email, password)
+            server.send_message(msg)
+        print(f"Email sent successfully to {recipient_email}")
+    except Exception as e:
+        print(f"An error occurred while sending email: {e}")
+
+def upload_documents():
+    file_paths = filedialog.askopenfilenames(title="Select Documents",
+                                             filetypes=[("PDF Files", "*.pdf"),
+                                                        ("Word Files", "*.docx;*.doc"),
+                                                        ("Text Files", "*.txt")])
+
+    if len(file_paths) <= 2:
+        messagebox.showwarning("Warning", "Please upload more than 2 documents.")
+        return
+
+    if file_paths:
+        folder_name = simpledialog.askstring("Input", "Enter the name you want the PDF to be saved as:")
+        email = simpledialog.askstring("Input", "Enter the email you want the PDF to be sent to:")
+        if folder_name and email:
+            project_dir = os.path.dirname(os.path.abspath(__file__))
+            pdf_name = f"{folder_name}_documents.pdf"
+            pdf_path = os.path.join(project_dir, pdf_name)
+
+            merger = PdfMerger()
+            for file_path in file_paths:
+                try:
+                    merger.append(file_path)
+                except Exception as e:
+                    print(f"An error occurred while opening {file_path}: {e}")
+
+            try:
+                merger.write(pdf_path)
+                merger.close()
+                print(f"PDF saved successfully at: {pdf_path}")
+                send_email_with_attachment(pdf_path, email, "Here are your documents", "Please find attached the PDF of the documents you provided, combined into one.")
+            except Exception as e:
+                print(f"An error occurred while saving PDF: {e}")
+
+def upload_document():
+    file_path = filedialog.askopenfilename(title="Select a PDF Document", filetypes=[("PDF Files", "*.pdf")])
+    if not file_path:
+        return
+
+    email = simpledialog.askstring("Input", "Enter the email you want the Word document to be sent to:")
+    if not email:
+        return
+
+    try:
+        pdf_reader = PdfReader(file_path)
+        doc = Document()
+        for page in pdf_reader.pages:
+            doc.add_paragraph(page.extract_text())
+
+        project_dir = os.path.dirname(os.path.abspath(__file__))
+        doc_name = os.path.splitext(os.path.basename(file_path))[0] + ".docx"
+        doc_path = os.path.join(project_dir, doc_name)
+        doc.save(doc_path)
+        print(f"Word document saved successfully at: {doc_path}")
+        send_email_with_attachment(doc_path, email, "Here is your document", "Please find attached the Word document converted from the PDF you provided.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+def upload_images():
+    file_paths = filedialog.askopenfilenames(title="Select Images",
+                                             filetypes=[("Image Files", ".jpg;.jpeg;.png;.gif")])
+
+    if file_paths:
+        folder_name = simpledialog.askstring("Input", "Enter the name you want the PDF to be saved as:")
+        email = simpledialog.askstring("Input", "Enter the email you want the PDF to be sent to:")
+        if folder_name and email:
+            project_dir = os.path.dirname(os.path.abspath(__file__))
+            pdf_name = f"{folder_name}_images.pdf"
+            pdf_path = os.path.join(project_dir, pdf_name)
+
+            a4_page_size = (595, 842)
+            images = []3
+
+            for file_path in file_paths:
+                try:
+                    img = Image.open(file_path)
+                    img = img.resize(a4_page_size, Image.LANCZOS)
+                    images.append(img.convert('RGB'))
+                except Exception as e:
+                    print(f"An error occurred while opening {file_path}: {e}")
+
+            if images:
+                try:
+                    images[0].save(pdf_path, save_all=True, append_images=images[1:])
+                    print(f"PDF saved successfully at: {pdf_path}")
+                    send_email_with_attachment(pdf_path, email, "Here is your PDF", "Please find attached the PDF of the images you provided.")
+                except Exception as e:
+                    print(f"An error occurred while saving PDF: {e}")
+
+# Create a basic Tkinter window
+root = tk.Tk()
+root.title("Document Converter and Email Sender")
+root.geometry("400x400")
+root.configure(bg='#f0f0f0')
+
+# Create a title label
+title_label = tk.Label(root, text="Document Converter and Email Sender", font=("Helvetica", 16), bg='#f0f0f0')
+title_label.pack(pady=20)
+
+# Create buttons with some styling
+upload_button_pdf = tk.Button(root, text="Upload Documents to Combine to PDF", command=upload_documents, font=("Helvetica", 12), bg='#4CAF50', fg='white', padx=10, pady=10)
+upload_button_pdf.pack(pady=10)
+
+upload_button_doc = tk.Button(root, text="Upload PDF to Convert to Word", command=upload_document, font=("Helvetica", 12), bg='#4CAF50', fg='white', padx=10, pady=10)
+upload_button_doc.pack(pady=10)
+
+upload_button_img = tk.Button(root, text="Upload Images to Convert to PDF", command=upload_images, font=("Helvetica", 12), bg='#4CAF50', fg='white', padx=10, pady=10)
+upload_button_img.pack(pady=10)
+
+# Run the application
+root.mainloop()
