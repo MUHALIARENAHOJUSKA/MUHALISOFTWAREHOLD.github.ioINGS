@@ -1,0 +1,201 @@
+package linkedinAUTO;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.IOException;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class BussinessAnalyst {
+	 private static int clickCount = 0;
+	public static void softwareengineering(WebDriver driver) throws IOException, InterruptedException {
+
+	     driver.get("https://www.pnet.co.za/candidate/login");
+	        driver.manage().window().maximize();
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        
+	        // Accept cookies
+	       // WebDriverWait wait = new WebDriverWait(driver, 10);
+
+	        // Wait until the accept cookies button is clickable and then click it
+	        WebElement acceptCookiesButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("ccmgt_explicit_accept")));
+	        acceptCookiesButton.click();
+
+	        // Wait until the email input field is visible and then send keys
+	        WebElement emailInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"stepstone-form-element-8\"]")));
+	        emailInput.sendKeys("arenahojuska@gmail.com");
+
+	        // Wait until the password input field is visible and then send keys
+	        WebElement passwordInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("password")));
+	        passwordInput.sendKeys("arenaho5god@@");
+
+	        // Wait until the login button is clickable and then click it
+	        WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div[2]/div/div/div/div/article/div/div[1]/div[1]/div/div[6]/div/div[1]/button")));
+	        loginButton.click();
+	        Thread.sleep(3000);
+	        // Wait until the element after login is visible and then click it
+	        WebElement headerLink = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"app-header\"]/header/div/div[1]/a")));
+	        headerLink.click();
+	        Thread.sleep(4000);
+	        
+	        
+	        
+	        
+	         // driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Tester");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Test Analyst");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Quality Assurance");  
+	       //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Automation Test");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Software Testing");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Computer  graduate");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Junior developer");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Technology Intern");
+	        
+	           //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("CyberSecurity");
+	       //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Junior developer");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Java");  
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Python");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Cloud");
+	        driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Software Engineering");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Computer  graduate");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("developer");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("SAP");
+	        
+	        
+	     // driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("salesforce");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("azure dev opps");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("full Stack");  
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Java script");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("HTML CSS");
+	      // driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Bussiness Analyst");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("SQL");
+	     // driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("front End");
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Back End");
+	        
+	        
+	        
+	        
+	   
+	        //driver.findElement(By.xpath("//*[starts-with(@id,'stepstone-autocomplete')]")).sendKeys("Tester");
+
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("CyberSecurity");
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Test Analyst");
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Tester");
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Quality Assurance");
+	          //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Automation Test");
+
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Junior developer");
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Java");
+	      //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Cloud");
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Computer  graduate");
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Software Engineering");
+	         //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("developer ");
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("SAP");
+	         //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("salesforce");
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("azure dev opps");
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("full Stack");
+	      //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Java script");
+	          //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("HTML CSS");
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("SQL");
+	       
+	      // driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Information technology");
+	      //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Software Testing");
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("technology Graduate ");
+	       //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Technology Intern ");
+	        //driver.findElement(By.xpath("//*[@id=\"stepstone-autocomplete-28\"]")).sendKeys("Computer Intern");
+	        
+	        
+	        
+	        
+	        
+	
+	      
+	        
+	        
+	        driver.findElement(By.xpath("//*[@id=\"app-searchBar\"]/div/div/div/div/div/div[2]/button")).click();
+	        driver.findElement(By.xpath("//a[contains(text(),'Easy Apply')]")).click();
+	        Thread.sleep(5000);
+	        driver.findElement(By.xpath("//span[contains(text(),'Relevance')]")).click();
+	        driver.findElement(By.xpath("//span[contains(text(),'Date')]")).click();
+	        Thread.sleep(3000);
+	        
+	        // Find all "Connect" buttons
+	        List<WebElement> connectButtons = driver.findElements(By.xpath("//*[contains(@id, 'job-item-3')]"));
+	        //List<WebElement> connectButtons = driver.findElements(By.xpath("//*[contains(@id, ')]"));
+	        for (WebElement button : connectButtons) {
+	            button.click();
+	             // Increment the click counter
+
+	            Thread.sleep(3000);
+	            String originalTab = driver.getWindowHandle();
+	            ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+	            Thread.sleep(5000);
+	            
+	            try {
+	                driver.switchTo().window(tabs.get(tabs.size() - 1));
+	                driver.findElement(By.xpath("/html/body/div[2]/div[2]/div/div[2]/div/div[1]/div[1]/div[2]/div/article/div/div[2]/div[1]/div/ul/li[1]/button")).click();
+	                driver.switchTo().window(tabs.get(tabs.size() - 1));
+	                Thread.sleep(5000);
+	                driver.close();
+	                
+	                Thread.sleep(5000);
+	                
+	                driver.switchTo().window(tabs.get(1));
+	                Thread.sleep(5000);
+	                ((EdgeDriver) driver).executeScript("window.scrollBy(0, 500);");
+	                
+	                Thread.sleep(4000);
+	                driver.findElement(By.xpath("//button[contains(text(),'Send Application')]")).click();
+	                clickCount++;
+	                Thread.sleep(4000);
+	                
+	                for (String tab : tabs) {
+	                    if (!tab.equals(originalTab)) {
+	                        driver.switchTo().window(tab);
+	                        driver.close();
+	                    }
+	                }
+	                
+	            } catch (Exception e) {
+	                
+	                driver.switchTo().window(tabs.get(0)); 
+	            }
+	            
+	            try {
+	                Thread.sleep(5000); 
+	            } catch (InterruptedException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	        
+	        
+	        System.out.println("Number of button clicks: " + clickCount);
+	    }
+   
+
+   public static void main(String[] args) throws IOException, InterruptedException {
+       WebDriver driver = new EdgeDriver();
+       driver.manage().window().maximize();
+
+       BussinessAnalyst.softwareengineering(driver);
+
+       // Close the driver
+       driver.quit();
+   }
+}
