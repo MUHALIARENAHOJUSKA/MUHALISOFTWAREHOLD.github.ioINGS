@@ -115,7 +115,7 @@ def upload_images():
             pdf_path = os.path.join(project_dir, pdf_name)
 
             a4_page_size = (595, 842)
-            images = []3
+            images = []
 
             for file_path in file_paths:
                 try:
